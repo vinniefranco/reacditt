@@ -1,10 +1,8 @@
-import React from 'react'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
+import React, { Component } from 'react'
 import { Link } from 'react-router'
 
-export default React.createClass({
-  mixins: [PureRenderMixin],
-  render() {
+export default class MenuItem extends Component {
+  render () {
     const { name, isActive } = this.props
 
     return (
@@ -13,4 +11,4 @@ export default React.createClass({
       </div>
     )
   }
-})
+}

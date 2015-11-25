@@ -11,14 +11,14 @@ const initialState = Map({
   items: List()
 })
 
-function addPosts(state, posts) {
+function addPosts (state, posts) {
   return state.merge(Map({
     isLoading: false,
     items: List(posts)
   }))
 }
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case GET_POSTS_REQUEST:
       return state.set('isLoading', true)

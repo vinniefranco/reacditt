@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "standard": {
+    "parser": "babel-eslint"
+  },
   "babel": {
     "presets": [
       "es2015",
@@ -33,8 +36,10 @@
     "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
+    "babel-eslint": "^4.1.6",
     "history": "^1.13.1",
     "immutable": "^3.7.5",
+    "pure-render-decorator": "^0.2.0",
     "react": "^0.14.3",
     "react-addons-pure-render-mixin": "^0.14.3",
     "react-dom": "^0.14.3",

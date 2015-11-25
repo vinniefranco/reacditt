@@ -1,16 +1,15 @@
-import React from 'react'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
+import React, { Component } from 'react'
 
 import Thread from './Thread'
 
-export default React.createClass({
-  mixins: [PureRenderMixin],
-  hasReplies() {
+export default class Comment extends Component {
+  hasReplies () {
     const { replies } = this.props.data
 
     return (typeof replies === 'object' && replies.data.children.length)
-  },
-  render() {
+  }
+
+  render () {
     const { data } = this.props
     let commentThread
 
@@ -22,15 +21,15 @@ export default React.createClass({
     }
 
     return (
-      <div className="comment">
-        <div className="content">
-          <div className="author">
+      <div className='comment'>
+        <div className='content'>
+          <div className='author'>
             {data.author}
           </div>
-          <div className="metadata">
+          <div className='metadata'>
             {data.ups} {data.downs}
           </div>
-          <div className="text">
+          <div className='text'>
             {data.body}
           </div>
         </div>
@@ -38,4 +37,4 @@ export default React.createClass({
       </div>
     )
   }
-})
+}

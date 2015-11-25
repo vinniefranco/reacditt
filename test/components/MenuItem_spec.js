@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { findDOMNode } from 'react'
 import ReactDOM from 'react-dom'
 import ReactTestUtils, {
   renderIntoDocument,
@@ -17,6 +17,6 @@ describe('MenuItem', () => {
     )
     const link = findRenderedDOMComponentWithClass(component, 'active')
 
-    expect(ReactDOM.findDOMNode(link).textContent).to.equal('Foo')
+    expect(findDOMNode(link).textContent).to.equal('Foo')
   })
 })

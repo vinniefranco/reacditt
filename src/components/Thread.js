@@ -1,19 +1,17 @@
-import React from 'react'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
+import React, { Component } from 'react'
 
 import Comment from './comment'
 
-export default React.createClass({
-  mixins: [PureRenderMixin],
-  render() {
+export default class Thread extends Component {
+  render () {
     const { comments } = this.props
 
     return (
-      <div className="comments">
+      <div className='ui threaded comments'>
         {comments.map(comment =>
           <Comment {...comment} key={comment.data.id} />
         )}
       </div>
     )
   }
-})
+}

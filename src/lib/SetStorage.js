@@ -1,10 +1,13 @@
 import { Set } from 'immutable'
+import StorageEngine from './StorageEngine'
 
-export function set(key, items) {
-  localStorage.setItem(key, items.toArray())
+function set (key, items) {
+  StorageEngine.setItem(key, items.toArray())
 }
 
-export function get(key) {
-  const rawItems = (localStorage.getItem(key) || '').split(',')
+function get (key) {
+  const rawItems = (StorageEngine.getItem(key) || '').split(',')
   return Set(rawItems)
 }
+
+export default { get, set }

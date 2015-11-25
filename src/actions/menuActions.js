@@ -1,4 +1,4 @@
-import { get, set } from '../lib/SetStorage'
+import storage from '../lib/SetStorage'
 
 import {
   SUBREDDIT_EXISTENCE_FAILURE,
@@ -9,26 +9,26 @@ import {
 
 import { fetch } from '../api'
 
-function subredditExistenceRequest(subreddit) {
+function subredditExistenceRequest (subreddit) {
   return { type: SUBREDDIT_EXISTENCE_REQUEST, subreddit }
 }
 
-function subredditExistenceSuccess(subreddit) {
+function subredditExistenceSuccess (subreddit) {
   return { type: SUBREDDIT_EXISTENCE_SUCCESS, subreddit }
 }
 
-function subredditExistenceFailure(subreddit) {
+function subredditExistenceFailure (subreddit) {
   return { type: SUBREDDIT_EXISTENCE_FAILURE, subreddit }
 }
 
-export function addSubreddit(subreddit) {
+export function addSubreddit (subreddit, store = storage) {
   return dispatch => {
     dispatch(subredditExistenceRequest(subreddit))
 
-    fetch(subreddit).head().then(
+    fetch.head(subreddit).then(
       (data) => {
-        const newMenuItems = get('reacditt_menu').add(subreddit)
-        set('reacditt_menu', newMenuItems)
+        const newMenuItems = store.get('reacditt_menu').add(subreddit)
+        store.set('reacditt_menu', newMenuItems)
 
         dispatch(subredditExistenceSuccess(subreddit))
       },
@@ -43,8 +43,8 @@ export function loadMenuItems(items) {
   return { type: MENU_ITEMS_LOADED, items}
 }
 
-export function getMenu(localStore = localStorage) {
-  const menuItems = get('reacditt_menu')
+export function getMenu(store = storage) {
+  const menuItems = store.get('reacditt_menu')
 
   return dispatch => dispatch(loadMenuItems(menuItems))
 }

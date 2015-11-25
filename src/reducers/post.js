@@ -1,4 +1,4 @@
-import { List, Map } from 'immutable'
+import { Map } from 'immutable'
 
 import {
   GET_POST_FAILURE,
@@ -17,9 +17,10 @@ const initialState = Map({
     data: {
       children: []
     }
-}})
+  }
+})
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case GET_POST_REQUEST:
       return state.set('isLoading', true)

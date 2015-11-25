@@ -11,7 +11,7 @@ const initialState = Map({
   items: Set()
 })
 
-function addSubreddit(state, subreddit) {
+function addSubreddit (state, subreddit) {
   const currentItems = state.get('items')
   const newMenu = Map({
     isLoading: false,
@@ -21,7 +21,7 @@ function addSubreddit(state, subreddit) {
   return state.merge(newMenu)
 }
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case SUBREDDIT_EXISTENCE_REQUEST:
       return state.set('isLoading', true)
